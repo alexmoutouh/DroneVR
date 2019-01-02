@@ -20,7 +20,7 @@ public class DroneController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update() {
+	void FixedUpdate() {
 		Vector3 direction = new Vector3();
 		if(interact.AttachedHands.Count == 2) {
 			this.Active = true;
@@ -36,19 +36,22 @@ public class DroneController : MonoBehaviour {
 			// Montee, descente du drone
 			float trigger = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger); 
 			if(trigger > 0.0) {
-				direction.y = -trigger;
+				direction.y = -1;
 			} else {
 				trigger = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
-				direction.y = trigger;
+                if(trigger > 0.0) {
+                    direction.y = 1;
+                }
 			}
 
-			// rotation
-			Vector2 rightAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);			
+            DroneControlled.Direction = direction;
+
+            // rotation
+            Vector2 rightAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);			
 			DroneControlled.Rot = rightAxis.x;
 
-			/*debug.text = "left sticks : " + leftAxis + " | right sticks : " + rightAxis + "\n" + 
-			" Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;*/
-			DroneControlled.Direction = direction;
+			debug.text = "direction : " + direction + "\n" + 
+			" Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;
 		} else if(interact.AttachedHands.Count == 1) {
 			this.Active = false;
 			this.transform.SetParent(player.transform);

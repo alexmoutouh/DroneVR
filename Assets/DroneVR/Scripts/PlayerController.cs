@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public DroneController Controller;
 
 	// Update is called once per frame
-	void Update() {
+	void FixedUpdate() {
 		if(!Controller.Active) {
             Vector3 front = NVRPlayer.Instance.Head.transform.forward;
             front.y = 0;
@@ -21,6 +21,6 @@ public class PlayerController : MonoBehaviour {
 			this.transform.Translate((front * leftAxis.y + right * leftAxis.x) * Time.deltaTime * 5);
 		}
 		
-		debug.text = "forward : " + NVRPlayer.Instance.Head.transform.forward + " right : " + NVRPlayer.Instance.Head.transform.right;
+		//debug.text = "looking to : " + NVRPlayer.Instance.Head.transform.forward + " right : " + NVRPlayer.Instance.Head.transform.right;
 	}
 }
