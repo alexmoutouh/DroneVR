@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using NewtonVR;
 
 public class DroneController : MonoBehaviour {
-	public Text debug;
+    public bool VRBehaviour = false; // Controles VR 
+
+    public Text debug;
 	public bool Active {get; private set;}
 
 	private GameObject player;
@@ -21,43 +23,70 @@ public class DroneController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate() {
-		Vector3 direction = new Vector3();
-		if(interact.AttachedHands.Count == 2) {
-			this.Active = true;
-			this.transform.SetParent(player.transform);
+        Vector3 direction = new Vector3();
+        if(VRBehaviour) {
+            if(interact.AttachedHands.Count == 2) {
+                this.Active = true;
+                this.transform.SetParent(player.transform);
 
-			// Déplacement du drone sur le plan (X, Z)
-			Vector2 leftAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-			direction.x = leftAxis.x;
-			direction.z = leftAxis.y;
-			/*DroneControlled.X = leftAxis.x;
-			DroneControlled.Z = leftAxis.y;*/
+                // Déplacement du drone sur le plan (X, Z)
+                Vector2 leftAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+                direction.x = leftAxis.x;
+                direction.z = leftAxis.y;
 
-			// Montee, descente du drone
-			float trigger = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger); 
-			if(trigger > 0.0) {
-				direction.y = -1;
-			} else {
-				trigger = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+                // Montee, descente du drone
+                float trigger = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
                 if(trigger > 0.0) {
-                    direction.y = 1;
+                    direction.y = -trigger;
+                } else {
+                    trigger = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+                    if(trigger > 0.0) {
+                        direction.y = trigger;
+                    }
                 }
-			}
+                
+                DroneControlled.Direction = direction;
+
+                // rotation
+                Vector2 rightAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+                DroneControlled.Rot = rightAxis.x;
+
+                debug.text = "direction : " + direction + "\n" +
+                " Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;
+            } else if(interact.AttachedHands.Count == 1) {
+                this.Active = false;
+                this.transform.SetParent(player.transform);
+            } else {
+                this.Active = false;
+                this.transform.parent = null;
+            }
+        } else {
+            // Déplacement du drone sur le plan (X, Z)
+            direction.x = Input.GetAxis("Horizontal");
+            direction.z = Input.GetAxis("Vertical");
+
+            // Montee, descente du drone
+            if(Input.GetKey(KeyCode.Space)) {
+                direction.y = 1.0f;
+            } else if(Input.GetKey(KeyCode.C)) {
+                direction.y = -1.0f;
+            } else {
+                direction.y = 0.0f;
+            }
 
             DroneControlled.Direction = direction;
 
             // rotation
-            Vector2 rightAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);			
-			DroneControlled.Rot = rightAxis.x;
+            float roationVal = 0.0f;
+            if(Input.GetKey(KeyCode.Q)) {
+                roationVal = -1.0f;
+            } else if(Input.GetKey(KeyCode.E)) {
+                roationVal = 1.0f;
+            } else {
+                roationVal = 0.0f;
+            }
 
-			debug.text = "direction : " + direction + "\n" + 
-			" Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;
-		} else if(interact.AttachedHands.Count == 1) {
-			this.Active = false;
-			this.transform.SetParent(player.transform);
-		} else {
-			this.Active = false;
-			this.transform.parent = null;
-		}
+            DroneControlled.Rot = roationVal;
+        }
 	}
 }
