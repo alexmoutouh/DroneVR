@@ -61,32 +61,34 @@ public class DroneController : MonoBehaviour {
                 this.transform.parent = null;
             }
         } else {
-            // Déplacement du drone sur le plan (X, Z)
-            direction.x = Input.GetAxis("Horizontal");
-            direction.z = Input.GetAxis("Vertical");
 
-            // Montee, descente du drone
-            if(Input.GetKey(KeyCode.Space)) {
-                direction.y = 1.0f;
-            } else if(Input.GetKey(KeyCode.C)) {
-                direction.y = -1.0f;
-            } else {
-                direction.y = 0.0f;
-            }
+			float moveHorizontal;    // Input mouvement horizontale
+			float moveVertical;      // Input mouvement verticale
+			float moveUp;            // Input monter / descendre
+			float moveSpin;          // Input tourner le drone sur lui meme
 
-            DroneControlled.Direction = direction;
+			moveHorizontal = Input.GetAxis("Horizontal");
+			moveVertical = Input.GetAxis("Vertical");
 
-            // rotation
-            float roationVal = 0.0f;
-            if(Input.GetKey(KeyCode.Q)) {
-                roationVal = -1.0f;
-            } else if(Input.GetKey(KeyCode.E)) {
-                roationVal = 1.0f;
-            } else {
-                roationVal = 0.0f;
-            }
+			if (Input.GetKey(KeyCode.Space))
+				moveUp = 50.0f * DroneControlled.SPEED;
 
-            DroneControlled.Rot = roationVal;
+			else if (Input.GetKey(KeyCode.C))
+				moveUp = -50.0f * DroneControlled.SPEED;
+
+			else
+				moveUp = 0.0f;
+
+			if (Input.GetKey(KeyCode.Q))
+				moveSpin = -2.0f;
+
+			else if (Input.GetKey(KeyCode.E))
+				moveSpin = 2.0f;
+
+			else
+				moveSpin = 0.0f;
+
+			DroneControlled.ApplyForces(moveHorizontal, moveVertical, moveUp, moveSpin);
         }
 	}
 }
