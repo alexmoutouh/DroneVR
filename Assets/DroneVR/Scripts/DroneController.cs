@@ -11,6 +11,8 @@ public class DroneController : MonoBehaviour {
     public bool Active { get; private set; }
 
     private bool taken;
+    private Vector3 initialPos;
+    private Quaternion initialRot;
     private GameObject player;
     private NVRInteractableItem interact;
 
@@ -21,16 +23,19 @@ public class DroneController : MonoBehaviour {
         rb.useGravity = false;
         rb.velocity = new Vector3(0, 0, 0);
         rb.angularVelocity = new Vector3(0, 0, 0);
-        this.transform.position = new Vector3(1, 1, 1);
-        this.transform.rotation = new Quaternion(0, 0, 0, 0);
+        this.transform.position = this.initialPos;
+        this.transform.rotation = this.initialRot;
     }
 
     // Use this for initialization
     void Start() {
-        this.taken = false;
         player = GameObject.FindGameObjectWithTag("Player");
         interact = this.GetComponent<NVRInteractableItem>();
+
+        this.taken = false;
         this.GetComponent<Rigidbody>().useGravity = false;
+        this.initialPos = this.transform.position;
+        this.initialRot = this.transform.rotation;
     }
 
     // Update is called once per frame
