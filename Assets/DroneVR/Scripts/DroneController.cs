@@ -10,15 +10,27 @@ public class DroneController : MonoBehaviour {
     public Text debug;
     public bool Active { get; private set; }
 
+    private bool taken;
     private GameObject player;
     private NVRInteractableItem interact;
 
     public Drone DroneControlled;
 
+    private void ResetController() {
+        Rigidbody rb = this.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.velocity = new Vector3(0, 0, 0);
+        rb.angularVelocity = new Vector3(0, 0, 0);
+        this.transform.position = new Vector3(1, 1, 1);
+        this.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
     // Use this for initialization
     void Start() {
+        this.taken = false;
         player = GameObject.FindGameObjectWithTag("Player");
         interact = this.GetComponent<NVRInteractableItem>();
+        this.GetComponent<Rigidbody>().useGravity = false;
     }
 
     // Update is called once per frame
@@ -58,9 +70,14 @@ public class DroneController : MonoBehaviour {
             } else if(interact.AttachedHands.Count == 1) {
                 this.Active = false;
                 this.transform.SetParent(player.transform);
+                this.GetComponent<Rigidbody>().useGravity = true;
             } else {
                 this.Active = false;
                 this.transform.parent = null;
+
+                if(OVRInput.Get(OVRInput.Button.One)) {
+                    this.ResetController();
+                }
             }
         } else {
             float moveUp; // Input monter / descendre
