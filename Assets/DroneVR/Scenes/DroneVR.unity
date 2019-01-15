@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 140386, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 478642, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -993,27 +997,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 139060d43b571b541a645df77ea68367, type: 3}
---- !u!1 &1163625988 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1840067389137226, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+--- !u!114 &1163625989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1163625989, guid: 1f4afe5e5aa8bde499b330063058e0e7,
     type: 3}
   m_PrefabInstance: {fileID: 1427628303}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1163625989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163625988}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37eb0ce44696c3840b8a8fa72b7b04a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  MaxTilt: 50
-  Stability: 20
 --- !u!114 &1229458740 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
@@ -1108,6 +1103,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1031218639154176, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: m_Name
+      value: Drone_prefab
+      objectReference: {fileID: 0}
     - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1141,24 +1140,18 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211668827371632, guid: 1f4afe5e5aa8bde499b330063058e0e7,
-        type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114211668827371632, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+    - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
 --- !u!1001 &1432880789
 PrefabInstance:
@@ -1167,6 +1160,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
+        type: 3}
+      propertyPath: DroneControlled
+      value: 
+      objectReference: {fileID: 1163625989}
+    - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
+        type: 3}
+      propertyPath: debug
+      value: 
+      objectReference: {fileID: 125479421}
+    - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
+        type: 3}
+      propertyPath: VRBehaviour
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1489331823, guid: e8e909653ab0d914b886eb7d3ba40d4d, type: 3}
       propertyPath: m_Name
       value: manette
@@ -1240,16 +1248,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
-        type: 3}
-      propertyPath: DroneControlled
-      value: 
-      objectReference: {fileID: 1163625989}
-    - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
-        type: 3}
-      propertyPath: debug
-      value: 
-      objectReference: {fileID: 125479421}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e909653ab0d914b886eb7d3ba40d4d, type: 3}
 --- !u!1 &1503761735
