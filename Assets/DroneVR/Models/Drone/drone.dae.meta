@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 442abe1efa281154a87bd7bc38a8ffc6
+timeCreated: 1543314307
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: helice1
+    100004: helice2
+    100006: helice3
+    100008: helice4
+    100010: pCube34
+    100012: pCube41
+    100014: pCube42
+    100016: pCylinder21
+    100018: polySurface23
+    100020: polySurface24
+    100022: polySurface37
+    100024: polySurface40
+    100026: polySurface42
+    100028: polySurface43
+    100030: polySurface51
+    100032: polySurface54
+    100034: polySurface59
+    100036: polySurface60
+    400000: //RootNode
+    400002: helice1
+    400004: helice2
+    400006: helice3
+    400008: helice4
+    400010: pCube34
+    400012: pCube41
+    400014: pCube42
+    400016: pCylinder21
+    400018: polySurface23
+    400020: polySurface24
+    400022: polySurface37
+    400024: polySurface40
+    400026: polySurface42
+    400028: polySurface43
+    400030: polySurface51
+    400032: polySurface54
+    400034: polySurface59
+    400036: polySurface60
+    2100000: side1
+    2100002: side2
+    2100004: Prepelars
+    2100006: cameralens
+    2100008: camera1
+    2100010: camera2
+    2100012: camera3
+    2100014: inside2
+    2100016: inside1
+    2100018: back
+    2100020: body1
+    2100022: inside4
+    2100024: inside3
+    2100026: Connect
+    2100028: side3
+    2300000: helice1
+    2300002: helice2
+    2300004: helice3
+    2300006: helice4
+    2300008: pCube34
+    2300010: pCube41
+    2300012: pCube42
+    2300014: pCylinder21
+    2300016: polySurface23
+    2300018: polySurface24
+    2300020: polySurface37
+    2300022: polySurface40
+    2300024: polySurface42
+    2300026: polySurface43
+    2300028: polySurface51
+    2300030: polySurface54
+    2300032: polySurface59
+    2300034: polySurface60
+    3300000: helice1
+    3300002: helice2
+    3300004: helice3
+    3300006: helice4
+    3300008: pCube34
+    3300010: pCube41
+    3300012: pCube42
+    3300014: pCylinder21
+    3300016: polySurface23
+    3300018: polySurface24
+    3300020: polySurface37
+    3300022: polySurface40
+    3300024: polySurface42
+    3300026: polySurface43
+    3300028: polySurface51
+    3300030: polySurface54
+    3300032: polySurface59
+    3300034: polySurface60
+    4300000: polySurface23
+    4300002: polySurface24
+    4300004: helice4
+    4300006: helice3
+    4300008: helice2
+    4300010: helice1
+    4300012: polySurface42
+    4300014: polySurface40
+    4300016: polySurface43
+    4300018: polySurface37
+    4300020: pCylinder21
+    4300022: polySurface51
+    4300024: pCube34
+    4300026: polySurface54
+    4300028: pCube41
+    4300030: polySurface59
+    4300032: pCube42
+    4300034: polySurface60
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
