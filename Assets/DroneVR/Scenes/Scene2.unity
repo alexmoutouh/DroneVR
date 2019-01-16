@@ -454,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
         type: 3}
       propertyPath: VRBehaviour
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1137813550026167897, guid: e8e909653ab0d914b886eb7d3ba40d4d,
         type: 3}
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TempsText: {fileID: 1880023490}
-  TempsEntreCheckpoint: 60
+  TempsEntreCheckpoint: 120
   tempsRestant: 1
   tempsAffichage: 0
   circuitFin: 0
@@ -1088,6 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab2070a3c9f4f47a7a6c4a9554a0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VRBehaviour: 0
   debug: {fileID: 1880023490}
   Controller: {fileID: 1798356616}
 --- !u!1001 &1933332957
