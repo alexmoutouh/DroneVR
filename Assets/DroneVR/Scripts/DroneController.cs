@@ -95,7 +95,7 @@ public class DroneController : MonoBehaviour {
 
             movement = new Vector3(Input.GetAxis("Horizontal"), moveUp, Input.GetAxis("Vertical"));
 
-            if(Input.GetKey(KeyCode.Q))
+            if(Input.GetKey(KeyCode.A))
                 rot = -2.0f;
             else if(Input.GetKey(KeyCode.E))
                 rot = 2.0f;

@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TempsText: {fileID: 125479421}
-  TempsEntreCheckpoint: 30
+  TempsEntreCheckpoint: 120
   tempsRestant: 1
   tempsAffichage: 0
   circuitFin: 0
@@ -1175,6 +1175,11 @@ PrefabInstance:
       propertyPath: VRBehaviour
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6750492426766796252, guid: e8e909653ab0d914b886eb7d3ba40d4d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1489331823, guid: e8e909653ab0d914b886eb7d3ba40d4d, type: 3}
       propertyPath: m_Name
       value: manette
@@ -1243,11 +1248,6 @@ PrefabInstance:
       propertyPath: DroneControlled
       value: 
       objectReference: {fileID: 1163625989}
-    - target: {fileID: 6750492426766796252, guid: e8e909653ab0d914b886eb7d3ba40d4d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e909653ab0d914b886eb7d3ba40d4d, type: 3}
 --- !u!1 &1503761735
@@ -1367,6 +1367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab2070a3c9f4f47a7a6c4a9554a0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VRBehaviour: 0
   debug: {fileID: 125479421}
   Controller: {fileID: 1229458740}
 --- !u!4 &1741822897 stripped
