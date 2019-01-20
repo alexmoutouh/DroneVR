@@ -85,7 +85,10 @@ public class DroneController : MonoBehaviour {
                 }
             }
         } else {
-            float moveUp; // Input monter / descendre
+			if (Input.GetKey(KeyCode.B))
+				DroneControlled.TurnOnOff();
+
+			float moveUp; // Input monter / descendre
             if(Input.GetKey(KeyCode.Space))
                 moveUp = 50.0f * DroneControlled.Speed;
             else if(Input.GetKey(KeyCode.C))

@@ -8,17 +8,71 @@ public class Drone : MonoBehaviour {
     public float MaxTilt = 50f;    // Inclinaison max du drone
     public float Stability = 20f;   // Niveau de stabilité du drone
 
+	private bool isFlying = false;
+
     private Rigidbody rb;
 
-    public Vector3 Direction { get; set; }
-    public float Rot { get; set; }
+	private AudioSource sonDrone;
+
+	private Vector3 Direction { get; set; }
+    private float Rot { get; set; }
+
+	private List<HeliceAnimation> helices;
 
     void Awake() {
-        this.Direction = new Vector3();
+		sonDrone = GetComponent<AudioSource>();
+
+		helices = new List<HeliceAnimation>();
+
+		helices.Add(transform.GetChild(0).GetComponent<HeliceAnimation>());
+		helices.Add(transform.GetChild(1).GetComponent<HeliceAnimation>());
+		helices.Add(transform.GetChild(2).GetComponent<HeliceAnimation>());
+		helices.Add(transform.GetChild(3).GetComponent<HeliceAnimation>());
+
+		this.Direction = new Vector3();
         this.rb = GetComponent<Rigidbody>();
     }
 
-    public void ApplyForces(Vector3 movement, float rot) {
+	private void FixedUpdate()
+	{
+		Debug.Log(sonDrone.time);
+		if (sonDrone.time > 75)
+		{
+			sonDrone.time = 5f;
+			
+		}
+	}
+
+
+	public void TurnOnOff()
+	{
+		isFlying = !isFlying;
+
+		if (isFlying)
+		{
+			sonDrone.time = 2f;
+			sonDrone.Play();
+		}
+		else
+		{
+			for (float i = 1; i > 0; i -= 0.1f)
+			{
+				sonDrone.volume = i;
+			}
+			sonDrone.Stop();
+		}
+
+		foreach (HeliceAnimation h in helices)
+		{
+			h.TurnOnOff();
+		}
+	}
+
+	public void ApplyForces(Vector3 movement, float rot) {
+
+		if (!isFlying)
+			return;
+
         //Stabilise le drone lorsqu'il bouge sur tous les axes
         Vector3 orientation = rb.transform.localRotation.eulerAngles;
         orientation.y = 0;

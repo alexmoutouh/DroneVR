@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1149,6 +1149,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924869152256192, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924869152256192, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924869152256192, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 81829562318582224, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: BypassListenerEffects
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.1388889
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: MinDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198266188766098654, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
