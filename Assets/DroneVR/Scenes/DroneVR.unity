@@ -854,11 +854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TempsText: {fileID: 125479421}
-  TempsEntreCheckpoint: 120
-  tempsRestant: 1
-  tempsAffichage: 0
-  circuitFin: 0
-  circuitGagner: 0
+  TempsEntreCheckpoint: 30
+  difficulte: 1
 --- !u!1001 &1094299465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -925,6 +922,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 255648588, guid: 139060d43b571b541a645df77ea68367, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 139060d43b571b541a645df77ea68367, type: 3}

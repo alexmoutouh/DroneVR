@@ -572,6 +572,8 @@ MonoBehaviour:
   tempsAffichage: 0
   circuitFin: 0
   circuitGagner: 0
+  difficulte: 0
+  circuitActiver: 0
 --- !u!1 &503543797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1296,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 81829562318582224, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
