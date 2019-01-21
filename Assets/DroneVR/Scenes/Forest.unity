@@ -796,6 +796,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 81000014173449286, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 3}
+--- !u!20 &1941994191 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20804469553687266, guid: 1f4afe5e5aa8bde499b330063058e0e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2074122596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2069938540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1163625989, guid: 1f4afe5e5aa8bde499b330063058e0e7,
@@ -819,6 +825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drone_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1163625989, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1941994191}
     - target: {fileID: 4919890774185726, guid: 1f4afe5e5aa8bde499b330063058e0e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.113

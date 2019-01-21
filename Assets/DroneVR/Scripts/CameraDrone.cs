@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraRenderer : MonoBehaviour {
+public class CameraDrone : MonoBehaviour {
 
 }

@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DroneVR\Scripts\Anneau.cs" />
-    <Compile Include="Assets\DroneVR\Scripts\CameraRenderer.cs" />
+    <Compile Include="Assets\DroneVR\Scripts\CameraDrone.cs" />
     <Compile Include="Assets\DroneVR\Scripts\CheckPoint.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Circuit.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Drone.cs" />

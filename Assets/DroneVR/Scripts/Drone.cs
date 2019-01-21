@@ -3,43 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Drone : MonoBehaviour {
-
+    private bool isFlying = false;
     public float Speed = 1f;   // vitesse du drone
     public float MaxTilt = 50f;    // Inclinaison max du drone
     public float Stability = 20f;   // Niveau de stabilité du drone
 
-    private bool isFlying = false;
-
     private Rigidbody rb;
-
     private AudioSource sonDrone;
 
     private Vector3 Direction { get; set; }
     private float Rot { get; set; }
 
+    public Camera camera;
     private List<HeliceAnimation> helices;
 
-    void Awake() {
-        sonDrone = GetComponent<AudioSource>();
+    private void FixRanges(ref Vector3 euler) {
+        if(euler.x < -180)
+            euler.x += 360;
+        else if(euler.x > 180)
+            euler.x -= 360;
 
-        helices = new List<HeliceAnimation>();
+        if(euler.y < -180)
+            euler.y += 360;
+        else if(euler.y > 180)
+            euler.y -= 360;
 
-        helices.Add(transform.GetChild(0).GetComponent<HeliceAnimation>());
-        helices.Add(transform.GetChild(1).GetComponent<HeliceAnimation>());
-        helices.Add(transform.GetChild(2).GetComponent<HeliceAnimation>());
-        helices.Add(transform.GetChild(3).GetComponent<HeliceAnimation>());
-
-        this.Direction = new Vector3();
-        this.rb = GetComponent<Rigidbody>();
+        if(euler.z < -180)
+            euler.z += 360;
+        else if(euler.z > 180)
+            euler.z -= 360;
     }
-
-    private void FixedUpdate() {
-        if(sonDrone.time > 75) {
-            sonDrone.time = 5f;
-
-        }
-    }
-
 
     public void TurnOnOff() {
         isFlying = !isFlying;
@@ -57,6 +50,10 @@ public class Drone : MonoBehaviour {
         foreach(HeliceAnimation h in helices) {
             h.TurnOnOff();
         }
+    }
+
+    public void RotateCamera(Vector3 axis) {
+        this.camera.transform.Rotate(axis, Space.Self);
     }
 
     public void ApplyForces(Vector3 movement, float rot) {
@@ -121,20 +118,24 @@ public class Drone : MonoBehaviour {
         rb.AddForceAtPosition(-rb.transform.right * desiredSpin, rb.transform.position - rb.transform.forward);
     }
 
-    void FixRanges(ref Vector3 euler) {
-        if(euler.x < -180)
-            euler.x += 360;
-        else if(euler.x > 180)
-            euler.x -= 360;
+    void Awake() {
+        sonDrone = GetComponent<AudioSource>();
 
-        if(euler.y < -180)
-            euler.y += 360;
-        else if(euler.y > 180)
-            euler.y -= 360;
+        helices = new List<HeliceAnimation>();
 
-        if(euler.z < -180)
-            euler.z += 360;
-        else if(euler.z > 180)
-            euler.z -= 360;
+        helices.Add(transform.GetChild(0).GetComponent<HeliceAnimation>());
+        helices.Add(transform.GetChild(1).GetComponent<HeliceAnimation>());
+        helices.Add(transform.GetChild(2).GetComponent<HeliceAnimation>());
+        helices.Add(transform.GetChild(3).GetComponent<HeliceAnimation>());
+
+        this.Direction = new Vector3();
+        this.rb = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate() {
+        if(sonDrone.time > 75) {
+            sonDrone.time = 5f;
+
+        }
     }
 }

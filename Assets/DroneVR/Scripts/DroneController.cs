@@ -44,7 +44,7 @@ public class DroneController : MonoBehaviour {
                 this.Active = true;
                 this.transform.SetParent(player.transform);
 
-                if(OVRInput.GetUp(OVRInput.Button.Two))
+                if(OVRInput.GetUp(OVRInput.Button.Four))
                     DroneControlled.TurnOnOff();
 
                 // Déplacement du drone sur le plan (X, Z)
@@ -71,6 +71,12 @@ public class DroneController : MonoBehaviour {
 
                 debug.text = "direction : " + movement + "\n" +
                 " Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;
+
+                // controles de la camera
+                if(OVRInput.Get(OVRInput.Button.One))
+                    DroneControlled.RotateCamera(Vector3.right);
+                else if(OVRInput.Get(OVRInput.Button.Two))
+                    DroneControlled.RotateCamera(-1 * Vector3.right);
             } else if(interact.AttachedHands.Count == 1) {
                 this.Active = false;
                 this.transform.SetParent(player.transform);
@@ -79,7 +85,7 @@ public class DroneController : MonoBehaviour {
                 this.Active = false;
                 this.transform.parent = null;
 
-                if(OVRInput.GetUp(OVRInput.Button.One)) {
+                if(OVRInput.GetUp(OVRInput.Button.Three)) {
                     this.ResetController();
                 }
             }
