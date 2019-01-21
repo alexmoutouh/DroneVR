@@ -62,14 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DroneVR\Scripts\Anneau.cs" />
+    <Compile Include="Assets\DroneVR\Scripts\CameraRenderer.cs" />
     <Compile Include="Assets\DroneVR\Scripts\CheckPoint.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Circuit.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Drone.cs" />
     <Compile Include="Assets\DroneVR\Scripts\DroneController.cs" />
     <Compile Include="Assets\DroneVR\Scripts\HeliceAnimation.cs" />
     <Compile Include="Assets\DroneVR\Scripts\KeyboardDroneControls.cs" />
+    <Compile Include="Assets\DroneVR\Scripts\MainMenu.cs" />
     <Compile Include="Assets\DroneVR\Scripts\PlayerController.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Variables.cs" />
+    <Compile Include="Assets\Forest\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs" />
     <Compile Include="Assets\NewtonVR\CollisionSoundFramework\NVRCollisionSoundController.cs" />
     <Compile Include="Assets\NewtonVR\CollisionSoundFramework\NVRCollisionSoundMaterials.cs" />
     <Compile Include="Assets\NewtonVR\CollisionSoundFramework\NVRCollisionSoundObject.cs" />
@@ -171,19 +174,17 @@
     <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRTrackedRemote.cs" />
     <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRWaitCursor.cs" />
-    <Compile Include="Assets\Scene 0\MainMenu.cs" />
-    <Compile Include="Assets\Scene 2\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs" />
     <None Include="Assets\Oculus\VR\Resources\OVRMRUnlitTransparent.shader" />
     <None Include="Assets\Oculus\VR\Resources\OVRMRChromaKey.cginc" />
-    <None Include="Assets\Scene 2\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
+    <None Include="Assets\Forest\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
     <None Include="Assets\Oculus\VR\Shaders\OVRColorRampAlpha.shader" />
     <None Include="Assets\Oculus\VR\Resources\Cubemap Blit.shader" />
     <None Include="Assets\Oculus\VR\Resources\OVRMRUnlit.shader" />
     <None Include="Assets\Oculus\VR\Shaders\Unlit Crosshair.shader" />
     <None Include="Assets\Oculus\VR\Resources\Unlit Transparent Color.shader" />
     <None Include="Assets\Oculus\VR\Resources\OVRMRCameraFrameLit.shader" />
-    <None Include="Assets\Scene 2\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
-    <None Include="Assets\Scene 2\Standard Assets\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\Forest\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Forest\Standard Assets\Fonts\OpenSans\License!.txt" />
     <None Include="Assets\Oculus\VR\Resources\Underlay Transparent Occluder.shader" />
     <None Include="Assets\Oculus\VR\Resources\Texture2D Blit.shader" />
     <None Include="Assets\Oculus\VR\Resources\OVRMRCameraFrame.shader" />
