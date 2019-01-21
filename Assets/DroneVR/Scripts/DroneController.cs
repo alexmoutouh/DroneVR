@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using NewtonVR;
 
 public class DroneController : MonoBehaviour {
     public bool VRBehaviour = false; // Controles VR 
-
-    public Text debug;
+    
     public bool Active { get; private set; }
 
-    private bool taken;
     private GameObject player;
     private NVRInteractableItem interact;
 
@@ -29,8 +25,6 @@ public class DroneController : MonoBehaviour {
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         interact = this.GetComponent<NVRInteractableItem>();
-
-        this.taken = false;
         this.GetComponent<Rigidbody>().useGravity = false;
     }
 
@@ -68,9 +62,6 @@ public class DroneController : MonoBehaviour {
                 // rotation
                 Vector2 rightAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
                 rot = rightAxis.x;
-
-                debug.text = "direction : " + movement + "\n" +
-                " Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;
 
                 // controles de la camera
                 if(OVRInput.Get(OVRInput.Button.One))

@@ -1,7 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using NewtonVR;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     public bool VRBehaviour;
@@ -52,10 +51,6 @@ public class PlayerController : MonoBehaviour {
                 this.transform.Rotate(-Vector3.up * Time.deltaTime * 5, Space.World);
             else if(Input.GetKey(KeyCode.O))
                 this.transform.Rotate(Vector3.up * Time.deltaTime * 5, Space.World);
-
-            if(Input.GetKey(KeyCode.Escape)) {
-                SceneManager.LoadScene(0);
-            }
         }
     }
 }

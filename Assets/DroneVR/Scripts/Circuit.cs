@@ -5,40 +5,37 @@ using UnityEngine.UI;
 
 public class Circuit : MonoBehaviour {
 
-    public Text TempsText;
+    //public Text TempsText;
     public int TempsEntreCheckpoint = 10;
-	public int difficulte;
+    public int difficulte;
 
-	private bool circuitActiver = false;
-	private bool circuitFin;
-	private bool circuitGagner;
-	private float tempsRestant = 1;
-	private int tempsAffichage;
-	private List<GameObject> listeCheckpoints;
-	private Variables var;
+    private bool circuitActive = false;
+    private bool circuitEnd;
+    private bool circuitWon;
+    private float tempsRestant = 1;
+    private int tempsAffichage;
+    private List<GameObject> listeCheckpoints;
+    private Variables var;
 
     // Start is called before the first frame update
     void Start() {
 
-		listeCheckpoints = new List<GameObject>();
-		foreach (Transform checkpoint_Prefab in transform)
-		{
-			listeCheckpoints.Add(checkpoint_Prefab.gameObject);
-		}
+        listeCheckpoints = new List<GameObject>();
+        foreach(Transform checkpoint_Prefab in transform) {
+            listeCheckpoints.Add(checkpoint_Prefab.gameObject);
+        }
 
-		var = new Variables();
-		if (difficulte != var.Get_difficulte())
-		{
-			hideCircuit();
-			return;
-		}
-		else
-			circuitActiver = true;
+        var = GameObject.FindGameObjectWithTag("gamedata").GetComponent<Variables>();
+        if(difficulte != var.Difficulty) {
+            hideCircuit();
+            return;
+        } else
+            circuitActive = true;
 
-		changerTailleAnneau();
-		circuitFin = false;
-        circuitGagner = false;
-        tempsRestant = TempsEntreCheckpoint; 
+        changerTailleAnneau();
+        circuitEnd = false;
+        circuitWon = false;
+        tempsRestant = TempsEntreCheckpoint;
 
         CheckPoint start = listeCheckpoints[0].transform.GetChild(0).GetComponent<CheckPoint>();
         start.isNext = true;
@@ -53,23 +50,23 @@ public class Circuit : MonoBehaviour {
         }
     }
     private void affichageTemps() {
-		if (!circuitActiver)
-			return;
+        if(!circuitActive)
+            return;
 
         tempsAffichage = Mathf.RoundToInt(tempsRestant);
-        TempsText.text = ("Temps restant : " + tempsAffichage + " secondes");
+        //TempsText.text = ("Temps restant : " + tempsAffichage + " secondes");
         if(tempsRestant >= 0) {
             tempsRestant -= Time.deltaTime;
         }
     }
 
     private void echecCircuit() {
-		if (!circuitActiver)
-			return;
+        if(!circuitActive)
+            return;
 
-		TempsText.text = ("Trop tard !");
-        circuitFin = true;
-        circuitGagner = false;
+        //TempsText.text = ("Trop tard !");
+        circuitEnd = true;
+        circuitWon = false;
         for(int i = 0; i < listeCheckpoints.Count; i++) {
             CheckPoint checkpt = listeCheckpoints[i].transform.GetChild(0).GetComponent<CheckPoint>();
             checkpt.isNext = true;
@@ -79,20 +76,20 @@ public class Circuit : MonoBehaviour {
     }
 
     private void succesCircuit() {
-		if (!circuitActiver)
-			return;
+        if(!circuitActive)
+            return;
 
-		TempsText.text = ("Vous avez réussi ! Bravo !");
-        circuitFin = true;
-        circuitGagner = true;
+        //TempsText.text = ("Vous avez réussi ! Bravo !");
+        circuitEnd = true;
+        circuitWon = true;
     }
 
     // Update is called once per frame
     void FixedUpdate() {
-		if (!circuitActiver)
-			return;
+        if(!circuitActive)
+            return;
 
-		if (!circuitFin) {
+        if(!circuitEnd) {
             if(tempsRestant < 0)
                 echecCircuit();
             else
@@ -102,10 +99,10 @@ public class Circuit : MonoBehaviour {
 
     public void completeCheckpoint(CheckPoint checkpoint) {
 
-		if (!circuitActiver)
-			return;
+        if(!circuitActive)
+            return;
 
-		if (!circuitFin && checkpoint.isNext && !checkpoint.isFinished) {
+        if(!circuitEnd && checkpoint.isNext && !checkpoint.isFinished) {
             tempsRestant = TempsEntreCheckpoint;
 
             GameObject checkpointPrefab = checkpoint.transform.parent.gameObject;
@@ -128,28 +125,24 @@ public class Circuit : MonoBehaviour {
         }
     }
 
-	private void hideCircuit()
-	{
-		foreach (GameObject ckpt in listeCheckpoints)
-		{
-			ckpt.SetActive(false);
-		}
-	}
+    private void hideCircuit() {
+        foreach(GameObject ckpt in listeCheckpoints) {
+            ckpt.SetActive(false);
+        }
+    }
 
-	private void changerTailleAnneau()
-	{
-		float scale = 0.0f;
+    private void changerTailleAnneau() {
+        float scale = 0.0f;
 
-		if (difficulte == 1)
-			scale = 2f;
-		else if (difficulte == 2)
-			scale = 1f;
-		else if (difficulte == 3)
-			return;
+        if(difficulte == 1)
+            scale = 2f;
+        else if(difficulte == 2)
+            scale = 1f;
+        else if(difficulte == 3)
+            return;
 
-		foreach (GameObject ckpt in listeCheckpoints)
-		{
-			ckpt.transform.localScale += new Vector3(scale, scale, scale);
-		}
-	}
+        foreach(GameObject ckpt in listeCheckpoints) {
+            ckpt.transform.localScale += new Vector3(scale, scale, scale);
+        }
+    }
 }

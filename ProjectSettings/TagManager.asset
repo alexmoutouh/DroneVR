@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - dronecontroller
+  - menu
+  - gamedata
   layers:
   - Default
   - TransparentFX
