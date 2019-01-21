@@ -11,8 +11,6 @@ public class DroneController : MonoBehaviour {
     public bool Active { get; private set; }
 
     private bool taken;
-    private Vector3 initialPos;
-    private Quaternion initialRot;
     private GameObject player;
     private NVRInteractableItem interact;
 
@@ -23,8 +21,8 @@ public class DroneController : MonoBehaviour {
         rb.useGravity = false;
         rb.velocity = new Vector3(0, 0, 0);
         rb.angularVelocity = new Vector3(0, 0, 0);
-        this.transform.position = this.initialPos;
-        this.transform.rotation = this.initialRot;
+        this.transform.position = NVRPlayer.Instance.transform.position + NVRPlayer.Instance.Head.transform.forward + Vector3.up;
+        this.transform.rotation = NVRPlayer.Instance.Head.transform.rotation * new Quaternion(0, 180, 0, 0);
     }
 
     // Use this for initialization
@@ -34,8 +32,6 @@ public class DroneController : MonoBehaviour {
 
         this.taken = false;
         this.GetComponent<Rigidbody>().useGravity = false;
-        this.initialPos = this.transform.position;
-        this.initialRot = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -47,6 +43,9 @@ public class DroneController : MonoBehaviour {
             if(interact.AttachedHands.Count == 2) {
                 this.Active = true;
                 this.transform.SetParent(player.transform);
+
+                if(OVRInput.GetUp(OVRInput.Button.Two))
+                    DroneControlled.TurnOnOff();
 
                 // Déplacement du drone sur le plan (X, Z)
                 Vector2 leftAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
@@ -80,15 +79,15 @@ public class DroneController : MonoBehaviour {
                 this.Active = false;
                 this.transform.parent = null;
 
-                if(OVRInput.Get(OVRInput.Button.One)) {
+                if(OVRInput.GetUp(OVRInput.Button.One)) {
                     this.ResetController();
                 }
             }
         } else {
-			if (Input.GetKey(KeyCode.B))
-				DroneControlled.TurnOnOff();
+            if(Input.GetKey(KeyCode.B))
+                DroneControlled.TurnOnOff();
 
-			float moveUp; // Input monter / descendre
+            float moveUp; // Input monter / descendre
             if(Input.GetKey(KeyCode.Space))
                 moveUp = 50.0f * DroneControlled.Speed;
             else if(Input.GetKey(KeyCode.C))
