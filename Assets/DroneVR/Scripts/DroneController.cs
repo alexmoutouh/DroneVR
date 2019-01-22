@@ -100,6 +100,12 @@ public class DroneController : MonoBehaviour {
                 rot = 2.0f;
             else
                 rot = 0.0f;
+
+            // controles de la camera
+            if(Input.GetKey(KeyCode.F))
+                DroneControlled.RotateCamera(Vector3.right);
+            else if(Input.GetKey(KeyCode.R))
+                DroneControlled.RotateCamera(-1 * Vector3.right);
         }
 
         DroneControlled.ApplyForces(movement, rot);

@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 5554338689303025493}
   - component: {fileID: 1209688784991210987}
   m_Layer: 5
-  m_Name: Example Canvas
+  m_Name: ChronoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

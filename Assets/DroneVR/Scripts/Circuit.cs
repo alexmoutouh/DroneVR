@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Circuit : MonoBehaviour {
 
-    //public Text TempsText;
+    public Text TempsText;
     public int TempsEntreCheckpoint = 10;
     public int difficulte;
 
@@ -52,7 +53,7 @@ public class Circuit : MonoBehaviour {
             return;
 
         tempsAffichage = Mathf.RoundToInt(tempsRestant);
-        //TempsText.text = ("Temps restant : " + tempsAffichage + " secondes");
+        TempsText.text = (tempsAffichage + " s left");
         if(tempsRestant >= 0) {
             tempsRestant -= Time.deltaTime;
         }
@@ -62,7 +63,7 @@ public class Circuit : MonoBehaviour {
         if(!circuitActive)
             return;
 
-        //TempsText.text = ("Trop tard !");
+        TempsText.text = ("Fail!");
         circuitEnd = true;
         circuitWon = false;
         for(int i = 0; i < listeCheckpoints.Count; i++) {
@@ -77,7 +78,7 @@ public class Circuit : MonoBehaviour {
         if(!circuitActive)
             return;
 
-        //TempsText.text = ("Vous avez réussi ! Bravo !");
+        TempsText.text = ("Success!");
         circuitEnd = true;
         circuitWon = true;
     }

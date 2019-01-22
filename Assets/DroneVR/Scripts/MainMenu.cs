@@ -23,16 +23,12 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(no);
     }
 
-    public void ChangeDifficulty(int no) {
+    public void SetDifficulty(int no) {
         data.Difficulty = no;
+        this.DisplayDifficulty();
     }
 
-    void Start() {
-        this.data = GameObject.FindGameObjectWithTag("gamedata").GetComponent<Variables>();
-        boutonFacile = GameObject.Find("MenuNoVR/Difficulté/Facile");
-        boutonMoyen = GameObject.Find("MenuNoVR/Difficulté/Moyen");
-        boutonDifficile = GameObject.Find("MenuNoVR/Difficulté/Difficile");
-
+    public void DisplayDifficulty() {
         this.mode.text = "Difficulty : ";
         if(this.data.Difficulty == 1) {
             this.mode.text += "Easy";
@@ -41,8 +37,15 @@ public class MainMenu : MonoBehaviour {
         } else if(this.data.Difficulty == 3) {
             this.mode.text += "Hard";
         }
+    }
 
-        this.GetComponent<Canvas>().enabled = false;
+    void Start() {
+        this.data = GameObject.FindGameObjectWithTag("gamedata").GetComponent<Variables>();
+        boutonFacile = GameObject.Find("MenuNoVR/Difficulté/Facile");
+        boutonMoyen = GameObject.Find("MenuNoVR/Difficulté/Moyen");
+        boutonDifficile = GameObject.Find("MenuNoVR/Difficulté/Difficile");
+
+        this.DisplayDifficulty();
     }
 
     void Update() {
