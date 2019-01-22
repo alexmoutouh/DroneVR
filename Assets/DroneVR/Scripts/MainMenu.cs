@@ -15,26 +15,6 @@ public class MainMenu : MonoBehaviour {
     public bool VRBehaviour = true;
     public Text mode;
 
-    public void changer_difficulte() {
-        if(data.Difficulty == 1) {
-            boutonFacile.GetComponent<Image>().color = Color.red;
-            boutonMoyen.GetComponent<Image>().color = Color.white;
-            boutonDifficile.GetComponent<Image>().color = Color.white;
-        }
-
-        if(data.Difficulty == 2) {
-            boutonFacile.GetComponent<Image>().color = Color.white;
-            boutonMoyen.GetComponent<Image>().color = Color.red;
-            boutonDifficile.GetComponent<Image>().color = Color.white;
-        }
-
-        if(data.Difficulty == 3) {
-            boutonFacile.GetComponent<Image>().color = Color.white;
-            boutonMoyen.GetComponent<Image>().color = Color.white;
-            boutonDifficile.GetComponent<Image>().color = Color.red;
-        }
-    }
-
     public void quitter() {
         Application.Quit();
     }
@@ -43,19 +23,8 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(no);
     }
 
-    public void bouton_facile() {
-        data.Difficulty = 1;
-        changer_difficulte();
-    }
-
-    public void bouton_moyen() {
-        data.Difficulty = 2;
-        changer_difficulte();
-    }
-
-    public void bouton_difficile() {
-        data.Difficulty = 3;
-        changer_difficulte();
+    public void ChangeDifficulty(int no) {
+        data.Difficulty = no;
     }
 
     void Start() {
@@ -63,8 +32,6 @@ public class MainMenu : MonoBehaviour {
         boutonFacile = GameObject.Find("MenuNoVR/Difficulté/Facile");
         boutonMoyen = GameObject.Find("MenuNoVR/Difficulté/Moyen");
         boutonDifficile = GameObject.Find("MenuNoVR/Difficulté/Difficile");
-
-        changer_difficulte();
 
         this.mode.text = "Difficulty : ";
         if(this.data.Difficulty == 1) {
@@ -92,12 +59,7 @@ public class MainMenu : MonoBehaviour {
             }
         } else {
             if(Input.GetKeyUp(KeyCode.Escape)) {
-                if(this.On) {
-                    this.GetComponent<Canvas>().enabled = false;
-                } else {
-                    this.GetComponent<Canvas>().enabled = true;
-                }
-                this.On = !this.On;
+                this.LoadScene(0);
             }
         }
     }

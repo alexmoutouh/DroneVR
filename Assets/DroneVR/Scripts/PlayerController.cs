@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour {
             this.transform.Translate(new Vector3(moveRight, moveUp, moveFront) * Time.deltaTime);
 
             if(Input.GetKey(KeyCode.U))
-                this.transform.Rotate(-Vector3.up * Time.deltaTime * 5, Space.World);
+                this.transform.Rotate(-Vector3.up, Space.World);
             else if(Input.GetKey(KeyCode.O))
-                this.transform.Rotate(Vector3.up * Time.deltaTime * 5, Space.World);
+                this.transform.Rotate(Vector3.up, Space.World);
         }
     }
 }

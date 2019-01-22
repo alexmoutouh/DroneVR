@@ -70,6 +70,7 @@
     <Compile Include="Assets\DroneVR\Scripts\HeliceAnimation.cs" />
     <Compile Include="Assets\DroneVR\Scripts\KeyboardDroneControls.cs" />
     <Compile Include="Assets\DroneVR\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\DroneVR\Scripts\MenuNoVR.cs" />
     <Compile Include="Assets\DroneVR\Scripts\PlayerController.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Variables.cs" />
     <Compile Include="Assets\Forest\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs" />
