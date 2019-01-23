@@ -62,13 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DroneVR\Scripts\Anneau.cs" />
-    <Compile Include="Assets\DroneVR\Scripts\CameraDrone.cs" />
     <Compile Include="Assets\DroneVR\Scripts\CheckPoint.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Circuit.cs" />
     <Compile Include="Assets\DroneVR\Scripts\Drone.cs" />
     <Compile Include="Assets\DroneVR\Scripts\DroneController.cs" />
     <Compile Include="Assets\DroneVR\Scripts\HeliceAnimation.cs" />
-    <Compile Include="Assets\DroneVR\Scripts\KeyboardDroneControls.cs" />
     <Compile Include="Assets\DroneVR\Scripts\MainMenu.cs" />
     <Compile Include="Assets\DroneVR\Scripts\MenuNoVR.cs" />
     <Compile Include="Assets\DroneVR\Scripts\PlayerController.cs" />

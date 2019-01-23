@@ -4,13 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuNoVR : MonoBehaviour {
     private bool On = false;
-    private Variables data;
+    private Variables data; // Variables globales conservees entre chaque changement de scene
 
     private GameObject boutonFacile;
     private GameObject boutonMoyen;
     private GameObject boutonDifficile;
     public Text mode;
-    
+
+    /// <summary>
+    /// Actualise l'affichage en fonction de la difficulte presente dans this.data
+    /// </summary>
     public void changer_difficulte() {
         if(data.Difficulty == 1) {
             boutonFacile.GetComponent<Image>().color = Color.red;
@@ -42,6 +45,9 @@ public class MenuNoVR : MonoBehaviour {
         SceneManager.LoadScene(no);
     }
 
+    /// <summary>
+    /// Change la difficulte en mode facile
+    /// </summary>
     public void bouton_facile() {
         data.Difficulty = 1;
         changer_difficulte();

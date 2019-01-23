@@ -3,11 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Circuit : MonoBehaviour {
-
-    public Text TempsText;
-    public int TempsEntreCheckpoint = 10;
-    public int difficulte;
-
     private bool circuitActive = false;
     private bool circuitEnd;
     private bool circuitWon;
@@ -16,9 +11,13 @@ public class Circuit : MonoBehaviour {
     private List<GameObject> listeCheckpoints;
     private Variables var;
 
+    public bool launched = false;
+    public int TempsEntreCheckpoint = 10;
+    public int difficulte;
+    public Text TempsText;
+
     // Start is called before the first frame update
     void Start() {
-
         listeCheckpoints = new List<GameObject>();
         foreach(Transform checkpoint_Prefab in transform) {
             listeCheckpoints.Add(checkpoint_Prefab.gameObject);
@@ -48,6 +47,7 @@ public class Circuit : MonoBehaviour {
             checkpt.UpdateCouleur();
         }
     }
+
     private void affichageTemps() {
         if(!circuitActive)
             return;
@@ -88,16 +88,21 @@ public class Circuit : MonoBehaviour {
         if(!circuitActive)
             return;
 
+        if(GameObject.FindGameObjectWithTag("drone").GetComponent<Drone>().IsFlying)
+            this.launched = true;
+
         if(!circuitEnd) {
             if(tempsRestant < 0)
                 echecCircuit();
-            else
+            else if(this.launched)
                 affichageTemps();
         }
     }
 
+    /// <summary>
+    /// Confirme le passage du drone dans le checkpoint et actualise l'etat du ciruit.
+    /// </summary>
     public void completeCheckpoint(CheckPoint checkpoint) {
-
         if(!circuitActive)
             return;
 

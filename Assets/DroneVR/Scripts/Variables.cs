@@ -10,6 +10,6 @@ public class Variables : MonoBehaviour {
 
     void Awake() {
         this.Difficulty = 1;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject); // Ne pas detruire et conserver le GameObject lors des changements de scene
     }
 }

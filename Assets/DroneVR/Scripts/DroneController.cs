@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using NewtonVR;
 
 public class DroneController : MonoBehaviour {
     public bool VRBehaviour = false; // Controles VR 
     
-    public bool Active { get; private set; }
+    public bool Active { get; private set; } // Est-ce que le joueur controle le drone? (manette prise avec les 2 touchs)
 
     private GameObject player;
     private NVRInteractableItem interact;
 
     public Drone DroneControlled;
 
+    /// <summary>
+    /// Reinitialise la position de la manette devant l'utilisateur.
+    /// </summary>
     private void ResetController() {
         Rigidbody rb = this.GetComponent<Rigidbody>();
         rb.useGravity = false;
@@ -36,7 +38,7 @@ public class DroneController : MonoBehaviour {
         if(VRBehaviour) {
             if(interact.AttachedHands.Count == 2) {
                 this.Active = true;
-                this.transform.SetParent(player.transform);
+                this.transform.SetParent(player.transform); // pour que la manette reste dans la main en cas de déplacement
 
                 if(OVRInput.GetDown(OVRInput.Button.Four))
                     DroneControlled.TurnOnOff();
@@ -70,7 +72,7 @@ public class DroneController : MonoBehaviour {
                     DroneControlled.RotateCamera(-1 * Vector3.right);
             } else if(interact.AttachedHands.Count == 1) {
                 this.Active = false;
-                this.transform.SetParent(player.transform);
+                this.transform.SetParent(player.transform); // pour que la manette reste dans la main en cas de déplacement
                 this.GetComponent<Rigidbody>().useGravity = true;
             } else {
                 this.Active = false;

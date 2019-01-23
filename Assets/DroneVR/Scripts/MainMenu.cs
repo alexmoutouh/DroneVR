@@ -3,14 +3,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using NewtonVR;
 
+// Menu des scenes du drone
 public class MainMenu : MonoBehaviour {
     private bool On = false;
     private Variables data;
-
-    private GameObject boutonFacile;
-    private GameObject boutonMoyen;
-    private GameObject boutonDifficile;
-    private GameObject boutonVR;
 
     public bool VRBehaviour = true;
     public Text mode;
@@ -41,10 +37,6 @@ public class MainMenu : MonoBehaviour {
 
     void Start() {
         this.data = GameObject.FindGameObjectWithTag("gamedata").GetComponent<Variables>();
-        boutonFacile = GameObject.Find("MenuNoVR/Difficulté/Facile");
-        boutonMoyen = GameObject.Find("MenuNoVR/Difficulté/Moyen");
-        boutonDifficile = GameObject.Find("MenuNoVR/Difficulté/Difficile");
-
         this.DisplayDifficulty();
     }
 
@@ -61,6 +53,7 @@ public class MainMenu : MonoBehaviour {
                 this.On = !this.On;
             }
         } else {
+            // Si le menu d'une scene drone n'est pas en mode VR. <Echap> au menu principal (cf MenuNoVR.cs). 
             if(Input.GetKeyUp(KeyCode.Escape)) {
                 this.LoadScene(0);
             }

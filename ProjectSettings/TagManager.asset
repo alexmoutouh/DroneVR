@@ -7,6 +7,7 @@ TagManager:
   - dronecontroller
   - menu
   - gamedata
+  - drone
   layers:
   - Default
   - TransparentFX
