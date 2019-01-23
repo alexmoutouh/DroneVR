@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour {
     private bool isFlying = false;
+    private float cooldown = 0f;
+
+    private float Rot { get; set; }
+    private Vector3 Direction { get; set; }
+    private Rigidbody rb;
+    private AudioSource sonDrone;
+    private List<HeliceAnimation> helices;
+
     public float Speed = 1f;   // vitesse du drone
     public float MaxTilt = 50f;    // Inclinaison max du drone
     public float Stability = 20f;   // Niveau de stabilité du drone
-
-    private Rigidbody rb;
-    private AudioSource sonDrone;
-
-    private Vector3 Direction { get; set; }
-    private float Rot { get; set; }
-
     public Camera camera;
-    private List<HeliceAnimation> helices;
 
     private void FixRanges(ref Vector3 euler) {
         if(euler.x < -180)
@@ -34,26 +34,52 @@ public class Drone : MonoBehaviour {
             euler.z -= 360;
     }
 
-    public void TurnOnOff() {
-        isFlying = !isFlying;
-
-        if(isFlying) {
-            sonDrone.time = 2f;
-            sonDrone.Play();
-        } else {
-            for(float i = 1; i > 0; i -= 0.1f) {
-                sonDrone.volume = i;
-            }
-            sonDrone.Stop();
+    private IEnumerator StartFlying() {
+        sonDrone.Play();
+        this.sonDrone.volume = 0;
+        while(this.sonDrone.volume < 1) {
+            this.sonDrone.volume += 0.1f;
+            yield return new WaitForSeconds(0.1f);
         }
+
+        isFlying = !isFlying;
+    }
+
+    private IEnumerator StopFlying() {
+        this.sonDrone.volume = 1;
+        while(this.sonDrone.volume > 0) {
+            this.sonDrone.volume -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        sonDrone.Stop();
+        isFlying = !isFlying;
+    }
+
+    public void TurnOnOff() {
+        if(this.cooldown > 0)
+            return;
+
+        this.cooldown = 10f;
 
         foreach(HeliceAnimation h in helices) {
             h.TurnOnOff();
         }
+
+        if(isFlying) {
+            StartCoroutine(StopFlying());
+        } else {
+            sonDrone.time = 2f;
+            StartCoroutine(StartFlying());
+        }
     }
 
     public void RotateCamera(Vector3 axis) {
-        this.camera.transform.Rotate(axis, Space.Self);
+        if((-0.7 <= this.camera.transform.localRotation.x && this.camera.transform.localRotation.x <= 0.7) ||
+        (this.camera.transform.localRotation.x <= -0.7 && axis.x > 0) ||
+        (0.7 <= this.camera.transform.localRotation.x && axis.x < 0)) {
+            this.camera.transform.Rotate(axis, Space.Self);
+        } 
     }
 
     public void ApplyForces(Vector3 movement, float rot) {
@@ -135,7 +161,10 @@ public class Drone : MonoBehaviour {
     private void FixedUpdate() {
         if(sonDrone.time > 75) {
             sonDrone.time = 5f;
+        }
 
+        if(this.cooldown > 0) {
+            this.cooldown -= Time.deltaTime;
         }
     }
 }

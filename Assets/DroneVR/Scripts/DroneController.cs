@@ -38,7 +38,7 @@ public class DroneController : MonoBehaviour {
                 this.Active = true;
                 this.transform.SetParent(player.transform);
 
-                if(OVRInput.GetUp(OVRInput.Button.Four))
+                if(OVRInput.GetDown(OVRInput.Button.Four))
                     DroneControlled.TurnOnOff();
 
                 // Déplacement du drone sur le plan (X, Z)
