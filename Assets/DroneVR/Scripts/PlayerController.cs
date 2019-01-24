@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
                 Vector2 leftAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
-                this.transform.Translate((front * leftAxis.y + right * leftAxis.x) * Time.deltaTime * 5);
+                this.transform.Translate((front * leftAxis.y + right * leftAxis.x) * Time.deltaTime * 2);
             }
         } else {
             float moveUp = 0.0f;
