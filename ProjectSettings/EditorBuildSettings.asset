@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/DroneVR/Scenes/Menu.unity
     guid: 428b8bedd0d15da419bab0ed1d167b94
-  - enabled: 1
+  - enabled: 0
     path: Assets/DroneVR/Scenes/MenuVR.unity
     guid: 3014151c34ae98143af1909861a7e997
   - enabled: 1
     path: Assets/DroneVR/Scenes/DroneVR.unity
     guid: e3f8b47dafea0124c9bf365ac3ca4420
+  - enabled: 1
+    path: Assets/DroneVR/Scenes/City.unity
+    guid: cb1e9cf89aa3fde4ca3a055ed8070945
   - enabled: 1
     path: Assets/DroneVR/Scenes/Forest.unity
     guid: e965bdcba8c6488499f37f089c2b5c5f
