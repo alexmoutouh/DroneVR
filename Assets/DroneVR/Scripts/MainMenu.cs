@@ -25,13 +25,13 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void DisplayDifficulty() {
-        this.mode.text = "Difficulty : ";
+        this.mode.text = "Difficulté : ";
         if(this.data.Difficulty == 1) {
-            this.mode.text += "Easy";
+            this.mode.text += "Facile";
         } else if(this.data.Difficulty == 2) {
-            this.mode.text += "Normal";
+            this.mode.text += "Moyen";
         } else if(this.data.Difficulty == 3) {
-            this.mode.text += "Hard";
+            this.mode.text += "Difficile";
         }
     }
 
@@ -47,7 +47,7 @@ public class MainMenu : MonoBehaviour {
                     this.GetComponent<Canvas>().enabled = false;
                 } else {
                     this.GetComponent<Canvas>().enabled = true;
-                    this.GetComponent<RectTransform>().position = NVRPlayer.Instance.transform.position + NVRPlayer.Instance.Head.transform.forward * 2 + Vector3.up;
+                    this.GetComponent<RectTransform>().position = NVRPlayer.Instance.transform.position + NVRPlayer.Instance.Head.transform.forward * 2 + Vector3.up * 2;
                     this.GetComponent<RectTransform>().rotation = NVRPlayer.Instance.Head.transform.rotation;
                 }
                 this.On = !this.On;
