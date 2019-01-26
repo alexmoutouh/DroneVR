@@ -65,9 +65,9 @@ public class MenuNoVR : MonoBehaviour {
 
     void Start() {
         this.data = GameObject.FindGameObjectWithTag("gamedata").GetComponent<Variables>();
-        boutonFacile = GameObject.Find("Fenetre/Mode/Easy");
-        boutonMoyen = GameObject.Find("Fenetre/Mode/Normal");
-        boutonDifficile = GameObject.Find("Fenetre/Mode/Hard");
+        boutonFacile = GameObject.Find("Fenetre/Difficulte/Easy");
+        boutonMoyen = GameObject.Find("Fenetre/Difficulte/Normal");
+        boutonDifficile = GameObject.Find("Fenetre/Difficulte/Hard");
 
         changer_difficulte();
     }

@@ -1142,7 +1142,7 @@ PrefabInstance:
     - target: {fileID: 4086135937381086027, guid: 554126a24fbecf54fb846b49a4a30191,
         type: 3}
       propertyPath: VRBehaviour
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7476981059558224361, guid: 554126a24fbecf54fb846b49a4a30191,
         type: 3}
@@ -3388,7 +3388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab2070a3c9f4f47a7a6c4a9554a0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VRBehaviour: 1
+  VRBehaviour: 0
   debug: {fileID: 0}
   Controller: {fileID: 43802390}
 --- !u!1001 &1933332957
@@ -4276,7 +4276,7 @@ PrefabInstance:
     - target: {fileID: 4136291526563268822, guid: e8e909653ab0d914b886eb7d3ba40d4d,
         type: 3}
       propertyPath: VRBehaviour
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4136291526563268825, guid: e8e909653ab0d914b886eb7d3ba40d4d,
         type: 3}
