@@ -82,6 +82,12 @@ ModelImporter:
     4300006: Rectangle7736
     4300008: Object19
     4300010: Plane208
+    6400000: Box223
+    6400002: Object19
+    6400004: Object229
+    6400006: Plane208
+    6400008: Rectangle6610
+    6400010: Rectangle7736
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -115,7 +121,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

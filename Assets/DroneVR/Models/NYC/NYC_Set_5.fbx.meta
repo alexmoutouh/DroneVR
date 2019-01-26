@@ -58,6 +58,10 @@ ModelImporter:
     4300002: k
     4300004: bush
     4300006: bush.001
+    6400000: bush
+    6400002: bush.001
+    6400004: k
+    6400006: Tents
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -91,7 +95,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

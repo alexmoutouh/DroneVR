@@ -103,6 +103,8 @@ ModelImporter:
     3300002: Street_lamp_1
     4300000: Street_lamp_1
     4300002: Circle02
+    6400000: Circle02
+    6400002: Street_lamp_1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -136,7 +138,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
