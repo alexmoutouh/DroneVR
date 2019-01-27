@@ -1,7 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using NewtonVR;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     public bool VRBehaviour;
@@ -19,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
                 Vector2 leftAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
-                this.transform.Translate((front * leftAxis.y + right * leftAxis.x) * Time.deltaTime * 5);
+                this.transform.Translate((front * leftAxis.y + right * leftAxis.x) * Time.deltaTime * 2, Space.Self);
             }
         } else {
             float moveUp = 0.0f;
@@ -49,13 +48,9 @@ public class PlayerController : MonoBehaviour {
             this.transform.Translate(new Vector3(moveRight, moveUp, moveFront) * Time.deltaTime);
 
             if(Input.GetKey(KeyCode.U))
-                this.transform.Rotate(-Vector3.up * Time.deltaTime * 5, Space.World);
+                this.transform.Rotate(-Vector3.up, Space.World);
             else if(Input.GetKey(KeyCode.O))
-                this.transform.Rotate(Vector3.up * Time.deltaTime * 5, Space.World);
-
-            if(Input.GetKey(KeyCode.Escape)) {
-                SceneManager.LoadScene(0);
-            }
+                this.transform.Rotate(Vector3.up, Space.World);
         }
     }
 }

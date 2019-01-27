@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNext: 1
   isFinished: 0
-  couleur: {r: 0, g: 0, b: 0, a: 0}
+  couleur: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &7388936272882019532
 GameObject:
   m_ObjectHideFlags: 0

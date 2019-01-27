@@ -1,41 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using NewtonVR;
 
 public class DroneController : MonoBehaviour {
     public bool VRBehaviour = false; // Controles VR 
+    
+    public bool Active { get; private set; } // Est-ce que le joueur controle le drone? (manette prise avec les 2 touchs)
 
-    public Text debug;
-    public bool Active { get; private set; }
-
-    private bool taken;
-    private Vector3 initialPos;
-    private Quaternion initialRot;
     private GameObject player;
     private NVRInteractableItem interact;
 
     public Drone DroneControlled;
 
+    /// <summary>
+    /// Reinitialise la position de la manette devant l'utilisateur.
+    /// </summary>
     private void ResetController() {
         Rigidbody rb = this.GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.velocity = new Vector3(0, 0, 0);
         rb.angularVelocity = new Vector3(0, 0, 0);
-        this.transform.position = this.initialPos;
-        this.transform.rotation = this.initialRot;
+        this.transform.position = NVRPlayer.Instance.transform.position + NVRPlayer.Instance.Head.transform.forward + Vector3.up;
+        this.transform.rotation = NVRPlayer.Instance.Head.transform.rotation * new Quaternion(0, 180, 0, 0);
     }
 
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         interact = this.GetComponent<NVRInteractableItem>();
-
-        this.taken = false;
         this.GetComponent<Rigidbody>().useGravity = false;
-        this.initialPos = this.transform.position;
-        this.initialRot = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -46,7 +38,10 @@ public class DroneController : MonoBehaviour {
         if(VRBehaviour) {
             if(interact.AttachedHands.Count == 2) {
                 this.Active = true;
-                this.transform.SetParent(player.transform);
+                this.transform.SetParent(player.transform); // pour que la manette reste dans la main en cas de déplacement
+
+                if(OVRInput.GetDown(OVRInput.Button.Four))
+                    DroneControlled.TurnOnOff();
 
                 // Déplacement du drone sur le plan (X, Z)
                 Vector2 leftAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
@@ -70,21 +65,27 @@ public class DroneController : MonoBehaviour {
                 Vector2 rightAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
                 rot = rightAxis.x;
 
-                debug.text = "direction : " + movement + "\n" +
-                " Drone pos : " + this.DroneControlled.transform.position + " | Drone Rot : " + this.DroneControlled.transform.rotation;
+                // controles de la camera
+                if(OVRInput.Get(OVRInput.Button.One))
+                    DroneControlled.RotateCamera(Vector3.right);
+                else if(OVRInput.Get(OVRInput.Button.Two))
+                    DroneControlled.RotateCamera(-1 * Vector3.right);
             } else if(interact.AttachedHands.Count == 1) {
                 this.Active = false;
-                this.transform.SetParent(player.transform);
+                this.transform.SetParent(player.transform); // pour que la manette reste dans la main en cas de déplacement
                 this.GetComponent<Rigidbody>().useGravity = true;
             } else {
                 this.Active = false;
                 this.transform.parent = null;
 
-                if(OVRInput.Get(OVRInput.Button.One)) {
+                if(OVRInput.GetUp(OVRInput.Button.Three)) {
                     this.ResetController();
                 }
             }
         } else {
+            if(Input.GetKey(KeyCode.B))
+                DroneControlled.TurnOnOff();
+
             float moveUp; // Input monter / descendre
             if(Input.GetKey(KeyCode.Space))
                 moveUp = 50.0f * DroneControlled.Speed;
@@ -101,6 +102,12 @@ public class DroneController : MonoBehaviour {
                 rot = 2.0f;
             else
                 rot = 0.0f;
+
+            // controles de la camera
+            if(Input.GetKey(KeyCode.F))
+                DroneControlled.RotateCamera(Vector3.right);
+            else if(Input.GetKey(KeyCode.R))
+                DroneControlled.RotateCamera(-1 * Vector3.right);
         }
 
         DroneControlled.ApplyForces(movement, rot);

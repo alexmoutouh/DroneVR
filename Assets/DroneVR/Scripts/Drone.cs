@@ -3,22 +3,110 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Drone : MonoBehaviour {
+    public bool IsFlying { get; private set; }
+    private float cooldown = 0f; // temps d'attente restant avant le prochain on/off du drone possible
+
+    private Rigidbody rb;
+    private AudioSource sonDrone;
+    private List<HeliceAnimation> helices;
 
     public float Speed = 1f;   // vitesse du drone
     public float MaxTilt = 50f;    // Inclinaison max du drone
     public float Stability = 20f;   // Niveau de stabilité du drone
+    public Camera camera; // camera avant du drone
 
-    private Rigidbody rb;
+    private Variables variables = new Variables();
 
-    public Vector3 Direction { get; set; }
-    public float Rot { get; set; }
+    private void FixRanges(ref Vector3 euler) {
+        if(euler.x < -180)
+            euler.x += 360;
+        else if(euler.x > 180)
+            euler.x -= 360;
 
-    void Awake() {
-        this.Direction = new Vector3();
-        this.rb = GetComponent<Rigidbody>();
+        if(euler.y < -180)
+            euler.y += 360;
+        else if(euler.y > 180)
+            euler.y -= 360;
+
+        if(euler.z < -180)
+            euler.z += 360;
+        else if(euler.z > 180)
+            euler.z -= 360;
     }
 
+    /// <summary>
+    /// Coroutine du lancement du drone. Controle le fadein du son et l'etat isFliying du drone.
+    /// </summary>
+    private IEnumerator StartFlying() {
+        sonDrone.Play();
+        this.sonDrone.volume = 0;
+        while(this.sonDrone.volume < 1) {
+            this.sonDrone.volume += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        IsFlying = true;
+    }
+
+    /// <summary>
+    /// Coroutine de l'arret du drone. Controle le fadeout du son et l'etat isFliying du drone.
+    /// </summary>
+    private IEnumerator StopFlying() {
+        this.sonDrone.volume = 1;
+        while(this.sonDrone.volume > 0) {
+            this.sonDrone.volume -= 0.1f;
+
+            if(this.sonDrone.volume < 0.5f)
+                IsFlying = false;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        sonDrone.Stop();
+    }
+
+    /// <summary>
+    /// Allume/eteint le drone.
+    /// </summary>
+    public void TurnOnOff() {
+        if(this.cooldown > 0)
+            return;
+
+        this.cooldown = 5f;
+
+        foreach(HeliceAnimation h in helices) {
+            h.TurnOnOff();
+        }
+
+        if(IsFlying) {
+            StartCoroutine(StopFlying());
+        } else {
+            sonDrone.time = 2f;
+            StartCoroutine(StartFlying());
+        }
+    }
+
+    /// <summary>
+    /// Effectue la rotation de la camera du drone.
+    /// </summary>
+    /// <param name="axis">Angles d'euler</param>
+    public void RotateCamera(Vector3 axis) {
+        if((-0.7 <= this.camera.transform.localRotation.x && this.camera.transform.localRotation.x <= 0.7) ||
+        (this.camera.transform.localRotation.x <= -0.7 && axis.x > 0) ||
+        (0.7 <= this.camera.transform.localRotation.x && axis.x < 0)) {
+            this.camera.transform.Rotate(axis, Space.Self);
+        }
+    }
+
+    /// <summary>
+    /// Applique les forces de mouvement et les rotations au drone.
+    /// </summary>
+    /// <param name="movement">Vecteur3 de mouvement</param>
+    /// <param name="rot">composante y du vecteur de rotation</param>
     public void ApplyForces(Vector3 movement, float rot) {
+        if(!IsFlying)
+            return;
+
         //Stabilise le drone lorsqu'il bouge sur tous les axes
         Vector3 orientation = rb.transform.localRotation.eulerAngles;
         orientation.y = 0;
@@ -72,25 +160,35 @@ public class Drone : MonoBehaviour {
         rb.AddForceAtPosition(force_front, pos_rear);
         rb.AddForceAtPosition(force_rear, pos_front);
 
+        //Effet de vent sur le drone
+        if (variables.getWind() != new Vector3(0, 0, 0))
+            rb.AddForce(variables.getWind());
+        
+
         // Rotation GAUCHE / DROITE
         rb.AddForceAtPosition(rb.transform.right * desiredSpin, rb.transform.position + rb.transform.forward);
         rb.AddForceAtPosition(-rb.transform.right * desiredSpin, rb.transform.position - rb.transform.forward);
     }
 
-    void FixRanges(ref Vector3 euler) {
-        if(euler.x < -180)
-            euler.x += 360;
-        else if(euler.x > 180)
-            euler.x -= 360;
+    void Awake() {
+        sonDrone = GetComponent<AudioSource>();
+        helices = new List<HeliceAnimation>();
+        helices.Add(transform.GetChild(0).GetComponent<HeliceAnimation>());
+        helices.Add(transform.GetChild(1).GetComponent<HeliceAnimation>());
+        helices.Add(transform.GetChild(2).GetComponent<HeliceAnimation>());
+        helices.Add(transform.GetChild(3).GetComponent<HeliceAnimation>());
 
-        if(euler.y < -180)
-            euler.y += 360;
-        else if(euler.y > 180)
-            euler.y -= 360;
+        this.rb = GetComponent<Rigidbody>();
+        this.IsFlying = false;
+    }
 
-        if(euler.z < -180)
-            euler.z += 360;
-        else if(euler.z > 180)
-            euler.z -= 360;
+    private void FixedUpdate() {
+        if(sonDrone.time > 75) {
+            sonDrone.time = 5f;
+        }
+
+        if(this.cooldown > 0) {
+            this.cooldown -= Time.deltaTime;
+        }
     }
 }

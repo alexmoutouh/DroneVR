@@ -9,31 +9,38 @@ ModelImporter:
     100006: //RootNode
     100008: manette
     100010: Sphere
+    100012: Screen
     400000: Cylinder
     400002: joyL
     400004: joyR
     400006: //RootNode
     400008: manette
     400010: Sphere
+    400012: Screen
     2100000: No Name
     2100002: Material
     2100004: Material.002
     2100006: Material.001
+    2100008: Material.003
+    2100010: Material.004
     2300000: Cylinder
     2300002: joyL
     2300004: joyR
     2300006: manette
     2300008: Sphere
+    2300010: Screen
     3300000: Cylinder
     3300002: joyL
     3300004: joyR
     3300006: manette
     3300008: Sphere
+    3300010: Screen
     4300000: Sphere
     4300002: Cylinder
     4300004: joyR
     4300006: manette
     4300008: joyL
+    4300010: Screen
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -49,7 +56,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: 4c6a734d92596bd4989d513197332037, type: 2}
+    second: {fileID: 2100000, guid: f8fd6414a8dd5954c893b8167f77e1da, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

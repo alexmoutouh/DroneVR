@@ -1,39 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Variables
-{
+public class Variables : MonoBehaviour {
     /* La difficulté choisie
      * 1 = facile
      * 2 = moyen
      * 3 = difficile
      * */
-    private static int difficulte = 1;
+    public int Difficulty { get; set; }
 
-    /* Si la VR doit être activée ou non
-     * true = activée
-     * false = non activée
-    */
-    private static bool VR = true;
+    private static Vector3 Wind = new Vector3(0, 0, 0);
 
-    public void Set_difficulte (int d)
+    public Vector3 getWind()
     {
-        difficulte = d;
+        return Wind;
     }
 
-    public int Get_difficulte()
+    public void setWind(Vector3 w)
     {
-        return difficulte;
+        Wind = w;
     }
 
-    public void Set_VR(bool b)
-    {
-        VR = b;
-    }
-
-    public bool Get_VR()
-    {
-        return VR;
+    void Awake() {
+        this.Difficulty = 1;
+        DontDestroyOnLoad(this.gameObject); // Ne pas detruire et conserver le GameObject lors des changements de scene
     }
 }

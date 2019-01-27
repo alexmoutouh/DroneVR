@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: 32f944ddc7ea3934cba4b2d5818a8e4b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Circle02
+    100002: //RootNode
+    100004: Street_lamp_1
+    400000: Circle02
+    400002: //RootNode
+    400004: Street_lamp_1
+    2100000: Box
+    2100002: 'Material #262.001'
+    2100004: 'Material #267.001'
+    2100006: 'Material #262.002'
+    2100008: 'Material #266'
+    2100010: 'Material #265.001'
+    2100012: 'Material #278.001'
+    2100014: 'Material #276'
+    2100016: 'Material #276.002'
+    2100018: 'Material #277.001'
+    2100020: 'Material #278'
+    2100022: 'Material #277.002'
+    2100024: 'Material #277'
+    2100026: 'Material #278.002'
+    2100028: 'Material #268'
+    2100030: 'Material #269.001'
+    2100032: 'Material #276.001'
+    2100034: lantern
+    2100036: Y_light
+    2100038: R_light
+    2100040: G_light
+    2100042: Metal.001
+    2100044: 'Material #32'
+    2100046: 'Material #33.001'
+    2100048: 'Material #33'
+    2100050: Stop & run.001
+    2100052: Stop & run
+    2100054: 'Material #280.001'
+    2100056: 'Material #108'
+    2100058: 'Material #106'
+    2100060: Billboards.005
+    2100062: 'Material #280'
+    2100064: Billboards.006
+    2100066: Metal
+    2100068: Standard_20.005
+    2100070: 'Material #383'
+    2100072: 'Material #380'
+    2100074: 'Material #267'
+    2100076: 'Material #269'
+    2100078: Standard_20.008
+    2100080: Standard_20.002
+    2100082: Standard_20.001
+    2100084: Standard_20.007
+    2100086: 02
+    2100088: 'Material #4'
+    2100090: 'Material #5'
+    2100092: 'Material #103608'
+    2100094: 'Material #450'
+    2100096: 'Material #235.001'
+    2100098: 'Material #103609'
+    2100100: k2s
+    2100102: 'Material #235'
+    2100104: 12 - Default
+    2100106: 19 - Default
+    2100108: k2
+    2100110: 'Material #103610'
+    2100112: 'Material #279'
+    2100114: 'Material #103611'
+    2100116: Pipes
+    2100118: rasty pipe
+    2100120: 01 - Default
+    2100122: grey
+    2100124: 'Material #3'
+    2100126: 'Material #6'
+    2100128: Billboards.001
+    2100130: 'Material #10'
+    2100132: 'Material #20'
+    2100134: 'Material #7'
+    2100136: 'Material #265.002'
+    2100138: 'Material #262'
+    2100140: 'Material #92'
+    2100142: 'Material #94'
+    2100144: 01
+    2100146: 'Material #260'
+    2100148: 'Material #265'
+    2100150: 02 - Default
+    2100152: 18 - Default
+    2100154: 24 - Default
+    2100156: 13 - Default.001
+    2100158: 'Material #264'
+    2100160: 'Material #9'
+    2100162: 02 - Default1
+    2100164: 01 - Default.001
+    2100166: 02 - Default1w
+    2100168: 02 - Default1wb
+    2100170: 13 - Default
+    2100172: 'Material #93.001'
+    2100174: 'Material #8'
+    2300000: Circle02
+    2300002: Street_lamp_1
+    3300000: Circle02
+    3300002: Street_lamp_1
+    4300000: Street_lamp_1
+    4300002: Circle02
+    6400000: Circle02
+    6400002: Street_lamp_1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
