@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void LoadScene(int no) {
+        //Si on est sur la scène "Foret"
+        if (no == 2)
+            //Vent de la gauche vers la droite
+            data.setWind(1);
         SceneManager.LoadScene(no);
     }
 

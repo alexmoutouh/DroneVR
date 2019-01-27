@@ -15,6 +15,8 @@ public class Drone : MonoBehaviour {
     public float Stability = 20f;   // Niveau de stabilité du drone
     public Camera camera; // camera avant du drone
 
+    private Variables variables = new Variables();
+
     private void FixRanges(ref Vector3 euler) {
         if(euler.x < -180)
             euler.x += 360;
@@ -157,6 +159,11 @@ public class Drone : MonoBehaviour {
         rb.AddForceAtPosition(force_right, pos_left);
         rb.AddForceAtPosition(force_front, pos_rear);
         rb.AddForceAtPosition(force_rear, pos_front);
+
+        //Effet de vent sur le drone
+        if (variables.getWind() != new Vector3(0, 0, 0))
+            rb.AddForce(variables.getWind());
+        
 
         // Rotation GAUCHE / DROITE
         rb.AddForceAtPosition(rb.transform.right * desiredSpin, rb.transform.position + rb.transform.forward);
