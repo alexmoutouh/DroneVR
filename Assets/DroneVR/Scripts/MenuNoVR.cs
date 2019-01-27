@@ -45,7 +45,7 @@ public class MenuNoVR : MonoBehaviour {
         //Si on est sur la scène "Foret"
         if (no == 2)
             //Vent de la gauche vers la droite
-            data.setWind(new Vector3 (0.5f, 0, 0));
+            data.setWind(1);
         SceneManager.LoadScene(no);
     }
 

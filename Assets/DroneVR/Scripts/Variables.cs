@@ -15,9 +15,11 @@ public class Variables : MonoBehaviour {
         return Wind;
     }
 
-    public void setWind(Vector3 w)
+    public void setWind(int w)
     {
-        Wind = w;
+        if (w == 1)
+           Wind = new Vector3(0.5f, 0, 0);
+
     }
 
     void Awake() {
