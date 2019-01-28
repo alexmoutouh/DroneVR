@@ -17,6 +17,8 @@ public class Variables : MonoBehaviour {
 
     public void setWind(int w)
     {
+        if (w == 0)
+            Wind = new Vector3(0, 0, 0);
         if (w == 1)
            Wind = new Vector3(0.5f, 0, 0);
 
